@@ -37,7 +37,7 @@ export default function RootLayout({
         style={{ fontFamily: "'DM Sans', sans-serif" }}
       >
         <Navbar />
-        <div className="flex justify-center items-center min-h-screen">
+        <div className="flex justify-center items-center min-h-screen overflow-x-hidden">
           {children}
         </div>
       </body>
