@@ -94,7 +94,9 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className={`${isOpen ? "block" : "hidden"} sm:hidden`}>
+      <div
+        className={`${isOpen ? "block" : "hidden"} sm:hidden absolute bg-white w-full`}
+      >
         <div className="pt-2 pb-3 space-y-1">
           {links.map(({ href, label }) => (
             <MobileNavLink key={href} href={href}>
