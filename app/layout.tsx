@@ -26,11 +26,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
+        style={{ fontFamily: "'DM Sans', sans-serif" }} // Set DM Sans as the default font
       >
         <Navbar />
-        {children}
+        <div className="flex justify-center items-center min-h-screen">
+          {children}
+        </div>
       </body>
     </html>
   );

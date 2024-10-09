@@ -7,9 +7,9 @@ import FeatureCard from "./FeatureCard";
 
 const HeroSection = () => {
   return (
-    <div className="text-center py-16 px-4 bg-white flex flex-col items-center">
-      <h1 className="text-5xl font-bold text-black">Snipe Assignment</h1>
-      <p className="text-xl text-secondary mt-4 font-bold">
+    <div className="h-full text-center py-16 px-4 bg-white flex flex-col items-center justify-center">
+      <h1 className="text-6xl font-bold text-black">Snipe Assignment</h1>
+      <p className="text-xl text-secondary mt-4 font-bold px-8 md:px-0">
         An Initiative to Create Education for the Future!
       </p>
       <button className="mt-8 bg-secondary text-white font-bold py-2 px-6 rounded-md text-lg flex items-center justify-center mx-auto">

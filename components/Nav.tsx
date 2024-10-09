@@ -3,28 +3,50 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import LogoSvg from "../Public/assets/Logo.svg";
+
+interface Link {
+  href: string;
+  label: string;
+}
+
+interface NavLinkProps {
+  href: string;
+  children: React.ReactNode;
+  isActive?: boolean;
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const links: Link[] = [
+    { href: "/", label: "Homepage" },
+    { href: "/impact", label: "Impact" },
+    { href: "/olympiad", label: "SNIPE Olympiad" },
+    { href: "/faqs", label: "FAQs & MYTHs" },
+    { href: "/about", label: "About Us" },
+    { href: "/contact", label: "Contact Us" },
+  ];
 
   return (
     <nav className="bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
-            <Image src={LogoSvg} alt="Logo" width={40} height={40} />
-          </div>
-          <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-            <NavLink href="/" isActive>
-              Homepage
-            </NavLink>
-            <NavLink href="/impact">Impact</NavLink>
-            <NavLink href="/olympiad">SNIPE Olympiad</NavLink>
-            <NavLink href="/faqs">FAQs & MYTHs</NavLink>
-            <NavLink href="/about">About Us</NavLink>
-            <NavLink href="/contact">Contact Us</NavLink>
-          </div>
+            <Image
+              src={LogoSvg}
+              alt="Logo"
+              className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16"
+            />
+          </div>{" "}
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
-            <button className="bg-orange-400 text-white px-4 py-2 rounded-md text-sm font-medium">
+            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+              {links.map(({ href, label }) => (
+                <NavLink key={href} href={href}>
+                  {label}
+                </NavLink>
+              ))}
+            </div>
+            <button className="bg-orange-400 text-white ml-4 px-4 py-2 rounded-md text-sm font-medium">
               Updates
             </button>
             <button className="ml-4 bg-gray-800 text-white px-4 py-2 rounded-md text-sm font-medium">
@@ -74,14 +96,11 @@ export default function Navbar() {
 
       <div className={`${isOpen ? "block" : "hidden"} sm:hidden`}>
         <div className="pt-2 pb-3 space-y-1">
-          <MobileNavLink href="/" isActive>
-            Homepage
-          </MobileNavLink>
-          <MobileNavLink href="/impact">Impact</MobileNavLink>
-          <MobileNavLink href="/olympiad">SNIPE Olympiad</MobileNavLink>
-          <MobileNavLink href="/faqs">FAQs & MYTHs</MobileNavLink>
-          <MobileNavLink href="/about">About Us</MobileNavLink>
-          <MobileNavLink href="/contact">Contact Us</MobileNavLink>
+          {links.map(({ href, label }) => (
+            <MobileNavLink key={href} href={href}>
+              {label}
+            </MobileNavLink>
+          ))}
         </div>
         <div className="pt-4 pb-3 border-t border-gray-200">
           <div className="flex items-center px-4">
@@ -100,18 +119,18 @@ export default function Navbar() {
   );
 }
 
-function NavLink({ href, children, isActive = false }) {
+function NavLink({ href, children, isActive = false }: NavLinkProps) {
   return (
     <Link
       href={href}
-      className={`inline-flex text-black  items-center px-1 pt-1 border-b-2 text-sm font-semibold ${isActive ? "text-secondary" : "border-transparent text-black hover:border-gray-300 hover:text-gray-700"}`}
+      className={`inline-flex text-black items-center px-1 pt-1 border-b-2 text-sm font-semibold ${isActive ? "text-secondary" : "border-transparent text-black hover:border-gray-300 hover:text-gray-700"}`}
     >
       {children}
     </Link>
   );
 }
 
-function MobileNavLink({ href, children, isActive = false }) {
+function MobileNavLink({ href, children, isActive = false }: NavLinkProps) {
   return (
     <Link
       href={href}
