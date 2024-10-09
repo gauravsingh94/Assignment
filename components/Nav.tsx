@@ -28,17 +28,21 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white shadow-md w-full">
+    <nav className="bg-white shadow-md w-full overflow-hidden">
+      {" "}
+      {/* Added overflow-hidden */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0 flex items-center">
             <Image
               src={LogoSvg}
               alt="Logo"
               className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16"
             />
-          </div>{" "}
-          <div className="hidden sm:ml-6 sm:flex sm:items-center">
+          </div>
+          <div className="hidden sm:ml-6 sm:flex sm:items-center flex-wrap">
+            {" "}
+            {/* Added flex-wrap */}
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               {links.map(({ href, label }) => (
                 <NavLink key={href} href={href}>
@@ -93,7 +97,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
       <div
         className={`${isOpen ? "block" : "hidden"} sm:hidden absolute bg-white w-full`}
       >
