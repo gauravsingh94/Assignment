@@ -22,7 +22,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         width={64}
         height={64}
       />
-      <h2 className="font-bold text-black">{title}</h2>
+      <h2 className="font-bold text-black underline">{title}</h2>
       <p className="mt-2 text-gray-500 ">{description}</p>
     </div>
   );
